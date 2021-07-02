@@ -1,0 +1,61 @@
+1. 프로젝트를 생성할 위치까지 Terminal을 통해
+이동한다.
+ - > Terminal 이동 명령 코드는 cd [폴더명]
+
+2. node.JS Project를 시작하기 위한 initailized를 한다.
+ -> 실행방법은 npm init을 Terminal에 작성한다.
+ -> 단, 터미널의 위치는 프로젝트 이어야 하고, npm init 후 발생되는 input들은 모두 
+ -< Enter(Retrun)키를 통해 생략하여도 된다.
+
+3. Node.js Package Manager를 통하여 필요한지 판단하여 설치한다.
+ -> npm install [Package Name] [-D]
+ -dep
+ 1) express
+ -devDep
+ 1) @babel/node
+ 2) @babel/core
+ 3) @babae/cli 
+ 4) @babel/preset-env
+ 5) nodemon
+
+4. 생성한 프로젝트이 시작점에 src라는 일반폴더를 생성한다.
+5. 방금 생성한 src폴더 내부에 app.js 라는 명칭의 파일을 생성한다.
+6. 파일 생성후, 프로젝트 시작점에 .babelrc라는 파일을 생성하고,
+ 내부에는 preset-env을 설정한다.
+ --------
+{
+    "presets" : ["@babel/preset-env]
+}
+---------
+
+7. 프로젝트 시작점 바로 밑에 있는 src폴더 내부에 app.js파일을 열고, 필요한 Package들을 임포트 한다.
+import 방식
+import [PackageName] from "Location";
+
+* from "Location"은, node_modules 내부에 
+설치된 Package는
+경로설정 없이 이름을 바로 입력한다.
+
+ - 필요한 Package
+ 1) express
+
+8. import한 express의 생성자를 실행시켜 변수 app을 생성하여, app에 express 생성자의 리턴 객체를 저장한다.
+변수 선언 방식은 let과 const가 있는데,
+특별히 값이 변경되지 않는 경우엔 const을 사용한다.
+PORT 변수를 선언하여 3000 값을 저장한다.
+단, 리터럴(우항)은 정수형 타입으로 저장한다.
+
+9. 생성된 변수 app에는 express 객체가 저장되어있고,
+지금부터 변수 app을 서버객체 라고 표현한다.
+
+서버객체에서 listen 함수를 사용하여, 첫번째 
+파라미터에는
+상단에 선언된 PORT 상수를 넣고, 두번째 
+파라미터에는
+콜백함수를 저장할 수 있기 때문에, ArrowFunction문법을 
+사용하여, 바로 함수를 지정한고, 해당함수 구현부에는 console.log를 사용하여 PORT와 서버가 실행되었다는 메세지를 출력한다.
+
+10. 프로젝트 시작점에 존재 하는 package.json 파일을 열어
+scripts 위치에 존재하는 "test" 코드를 전체 삭제하고,
+"start" 명령어를 만들어, 실행코드는 nodemon과 babel-node를 함께 실행하여
+프로젝트 시작점에 있는 src 내부에 app.js 파일을 실행하도록 작성한다.
